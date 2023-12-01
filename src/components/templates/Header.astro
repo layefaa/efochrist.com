@@ -1,0 +1,60 @@
+---
+import Logo from '@atoms/Logo.astro'
+import Menu from '@atoms/Menu'
+import NavLinks from '@molecules/NavLinks'
+import MobileNav from '@organisms/MobileNav'
+import Socials from '@molecules/Socials.tsx'
+---
+
+<header class='containerXPadding z-20 bg-transparent w-full flex justify-between items-center py-[2rem] fixed'>
+	<nav class=' gap-[4rem] text-18 w-[40%] navbar hidden md:flex text-bb-tertiary-black' '>
+		<NavLinks classes='laptop' client:only='react' />
+	</nav>
+	<!--Mobile Start-->
+	<div class=' w-[10%]  z-30 md:hidden'>
+		<Menu client:only='react' />
+	</div>
+	<!--Mobile End-->
+	<a href='/' class=' z-30'>
+		<Logo classes='w-[8.2rem] lg:w-[12.2rem]' />
+	</a>
+
+	<!--Mobile Start-->
+	<div class='w-[10%] md:hidden' />
+	<!--Mobile End-->
+
+	<div class='w-[40%] hidden md:flex justify-end'>
+		<Socials client='visible' />
+	</div>
+
+	<!--Mobile Start-->
+	<MobileNav client:only='react' />
+	<!--Mobile End-->
+</header>
+<script>
+	//Media Query Selector
+	const mediaQuery = window.matchMedia('(min-width: 768px)')	//(min-width: 768px) matches bigger screen devices
+
+	//Get the current url pathname
+	const { pathname } = window.location
+	const setActiveLink = () => {
+		let activeLinkElement = (mediaQuery.matches) ?
+			document.querySelector(
+				`a[href="${pathname}"]`) :
+			document.querySelector(
+				`a[href="${pathname}"]`)
+
+		console.log(activeLinkElement)
+		if (activeLinkElement) {
+
+			activeLinkElement.classList.add('active')
+		}
+	}
+	setActiveLink()
+	// document.addEventListener('astro:after-swap', setActiveLink)
+
+</script>
+
+
+
+

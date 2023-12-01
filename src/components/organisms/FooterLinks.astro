@@ -1,0 +1,19 @@
+---
+import FooterHeading from '@atoms/FooterHeading.astro'
+import { links } from '@content/info'
+import Link from '@atoms/Link'
+const style = 'flex flex-col gap-[1.5rem]'
+---
+
+<FooterHeading name='Links' />
+<div class={style}>
+	{
+		links.map((x) => {
+			return (
+				<Link classes='text-bb-quaternary-black text-16' name={x.name} url={x.url} />
+			)
+
+		})
+
+	}
+</div>

@@ -1,0 +1,24 @@
+---
+import { Image } from 'astro:assets'
+import Logo from '@atoms/Logo.astro'
+import { Hero } from '@content/index.js'
+import Button from '@atoms/Button'
+import Chair from '@assets/img/chair.png'
+---
+
+<div
+	class='containerXPadding pt-[10rem] pb-[5rem] lg:py-0 gap-[5rem] lg:gap-0 flex flex-col-reverse lg:flex-row items-center w-full lg:min-h-screen bg-bb-secondary-white'>
+	<div class='self-end lg:hidden'>
+		<Button label={Hero.cta} />
+	</div>
+	<div class='w-full lg:w-1/2 lg:h-full '>
+		<Image src={Chair} alt='chair' />
+	</div>
+	<div class='lg:w-1/2 pl-[5rem] flex gap-[4rem] lg:gap-[8rem] flex-col items-end'>
+		<p class='text-right w-5/6'>{Hero.paragraph}</p>
+		<Logo dimension='w-2/3 lg:w-11/12' />
+		<div class='hidden lg:block'>
+			<Button label={Hero.cta} />
+		</div>
+	</div>
+</div>
